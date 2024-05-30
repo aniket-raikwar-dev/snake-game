@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #202427;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+}
+
+img {
+  width: 68%;
+}
+
+h2,
+.score {
+  color: #9fc2d5;
+  font-family: "Press Start 2P", system-ui;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.score {
+  font-size: 122px !important;
+}
+
+h2:hover {
+  color: #f36060;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  color: #73797e;
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+  width: 60%;
+  margin-top: 40px;
+  letter-spacing: 0.2px;
+}
+
+.snake-box {
+  width: 410px;
+  height: 410px;
+  border: 1px dashed #9fc2d5;
+  margin-top: 20px;
+  position: relative;
+}
+
+.btn-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 80px;
+  height: 45px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  align-items: center;
+  background-color: #9fc2d5;
+  cursor: pointer;
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  svg {
+    width: 30px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.mt-2 {
+  margin-top: 10px;
+}
+
+.mb-2 {
+  margin-bottom: 10px;
+}
+
+.restart {
+  font-size: 20px;
+  font-family: "Press Start 2P", system-ui;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.restart:hover {
+  color: #f36060;
+}
+
+.snake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f36060;
+  border: 1px solid rgb(34, 34, 34);
+  z-index: 2;
+}
+
+.food {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(13, 192, 129);
+  border: 1px solid rgb(34, 34, 34);
+  z-index: 1;
+}
+.game-over {
+  color: #ffffff;
+  background-color: rgb(9, 175, 117);
+  font-family: "Press Start 2P", system-ui;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .game-info {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    width: 70%;
+  }
+  .snake-box {
+    width: 95%;
+    height: 410px;
   }
 }
