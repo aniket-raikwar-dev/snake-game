@@ -221,15 +221,18 @@ function App() {
               </>
             )}
           </div>
-          <Buttons
-            onLeft={onLeft}
-            onRight={onRight}
-            onUp={onUp}
-            onDown={onDown}
-          />
-          <p className="restart" onClick={restartSnakeGame}>
-            Restart
-          </p>
+          {isGameOver ? (
+            <p className="restart" onClick={restartSnakeGame}>
+              Restart
+            </p>
+          ) : (
+            <Buttons
+              onLeft={onLeft}
+              onRight={onRight}
+              onUp={onUp}
+              onDown={onDown}
+            />
+          )}
         </div>
       ) : (
         <div className="game-info">
