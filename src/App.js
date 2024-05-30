@@ -18,8 +18,8 @@ const initialState = {
   direction: "RIGHT",
   speed: 100,
   snakeDots: [
-    [0, 0],
-    [0, 2],
+    [8, 8],
+    [8, 8],
   ],
   score: 0,
   isGameOver: false,
@@ -27,15 +27,12 @@ const initialState = {
 
 function App() {
   const [isSnakeGameStart, setIsSnakeGameStart] = useState(false);
-  const [food, setFood] = useState(getRandomFood());
-  const [direction, setDirection] = useState("RIGHT");
-  const [speed, setSpeed] = useState(100);
+  const [food, setFood] = useState(initialState.food);
+  const [direction, setDirection] = useState(initialState.direction);
+  const [speed, setSpeed] = useState(initialState.speed);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [score, setScore] = useState(0);
-  const [snakeDots, setSnakeDots] = useState([
-    [0, 0],
-    [0, 2],
-  ]);
+  const [score, setScore] = useState(initialState.score);
+  const [snakeDots, setSnakeDots] = useState(initialState.snakeDots);
 
   useEffect(() => {
     if (isSnakeGameStart && !isGameOver) {
@@ -58,18 +55,27 @@ function App() {
 
   const onKeyDown = (e) => {
     e.preventDefault();
-    switch (e.keyCode) {
+    const { keyCode } = e;
+    switch (keyCode) {
       case 37:
-        setDirection("LEFT");
+        if (direction !== "RIGHT") {
+          setDirection("LEFT");
+        }
         break;
       case 38:
-        setDirection("UP");
+        if (direction !== "DOWN") {
+          setDirection("UP");
+        }
         break;
       case 39:
-        setDirection("RIGHT");
+        if (direction !== "LEFT") {
+          setDirection("RIGHT");
+        }
         break;
       case 40:
-        setDirection("DOWN");
+        if (direction !== "UP") {
+          setDirection("DOWN");
+        }
         break;
       default:
         break;
@@ -147,43 +153,51 @@ function App() {
   };
 
   const onRight = () => {
-    let dots = [...snakeDots];
-    let head = dots[dots.length - 1];
-    head = [head[0] + 2, head[1]];
-    dots.push(head);
-    dots.shift();
-    setDirection("RIGHT");
-    setSnakeDots(dots);
+    if (direction !== "LEFT") {
+      let dots = [...snakeDots];
+      let head = dots[dots.length - 1];
+      head = [head[0] + 2, head[1]];
+      dots.push(head);
+      dots.shift();
+      setDirection("RIGHT");
+      setSnakeDots(dots);
+    }
   };
 
   const onLeft = () => {
-    let dots = [...snakeDots];
-    let head = dots[dots.length - 1];
-    head = [head[0] - 2, head[1]];
-    dots.push(head);
-    dots.shift();
-    setDirection("LEFT");
-    setSnakeDots(dots);
+    if (direction !== "RIGHT") {
+      let dots = [...snakeDots];
+      let head = dots[dots.length - 1];
+      head = [head[0] - 2, head[1]];
+      dots.push(head);
+      dots.shift();
+      setDirection("LEFT");
+      setSnakeDots(dots);
+    }
   };
 
   const onDown = () => {
-    let dots = [...snakeDots];
-    let head = dots[dots.length - 1];
-    head = [head[0], head[1] + 2];
-    dots.push(head);
-    dots.shift();
-    setDirection("DOWN");
-    setSnakeDots(dots);
+    if (direction !== "UP") {
+      let dots = [...snakeDots];
+      let head = dots[dots.length - 1];
+      head = [head[0], head[1] + 2];
+      dots.push(head);
+      dots.shift();
+      setDirection("DOWN");
+      setSnakeDots(dots);
+    }
   };
 
   const onUp = () => {
-    let dots = [...snakeDots];
-    let head = dots[dots.length - 1];
-    head = [head[0], head[1] - 2];
-    dots.push(head);
-    dots.shift();
-    setDirection("UP");
-    setSnakeDots(dots);
+    if (direction !== "DOWN") {
+      let dots = [...snakeDots];
+      let head = dots[dots.length - 1];
+      head = [head[0], head[1] - 2];
+      dots.push(head);
+      dots.shift();
+      setDirection("UP");
+      setSnakeDots(dots);
+    }
   };
 
   const startSnakeGame = () => {
@@ -197,7 +211,7 @@ function App() {
   };
 
   const restartSnakeGame = () => {
-    setIsSnakeGameStart(true);
+    setIsSnakeGameStart(false);
     setIsGameOver(false);
     setScore(0);
     setFood(initialState.food);
