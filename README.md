@@ -1,5 +1,5 @@
 # Snake Game 🐍
-Snake game using JavaScript. The game includes smooth movement, responsive controls, and dynamic score tracking as the snake progresses. This project demonstrates strong foundational skills in JavaScript, including DOM manipulation, event handling, and game loop logic, making it an excellent example of practical game development using web technologies.
+Snake game using React JS. The game includes smooth movement, responsive controls, and dynamic score tracking as the snake progresses. This project demonstrates strong foundational skills in JavaScript, including DOM manipulation, event handling, and game loop logic, making it an excellent example of practical game development using web technologies.
 
 #### Live : https://snake-game-seven-lemon.vercel.app/
 
